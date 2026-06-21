@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>竞猜足球 · 稳定入口与场景说明</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      background: #faf9f7;
+      color: #2e2b28;
+      line-height: 1.6;
+      padding: 0 1.2rem;
+    }
+
+    .page {
+      max-width: 880px;
+      margin: 3rem auto;
+    }
+
+    /* hero */
+    .hero {
+      background: #f0ece6;
+      border-radius: 2rem;
+      padding: 2.8rem 2.2rem;
+      margin-bottom: 2.8rem;
+      text-align: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+    }
+
+    .hero h1 {
+      font-size: 2.2rem;
+      font-weight: 500;
+      letter-spacing: 0.01em;
+      color: #2b2a28;
+      margin-bottom: 0.6rem;
+    }
+
+    .hero .sub {
+      font-size: 1.15rem;
+      color: #5a5650;
+      max-width: 500px;
+      margin: 0 auto;
+      line-height: 1.5;
+    }
+
+    .hero .sub a {
+      color: #6b5f4e;
+      text-decoration: underline 1px dashed #b8aa96;
+      text-underline-offset: 4px;
+      font-weight: 500;
+    }
+
+    .hero .sub a:hover {
+      color: #3f372e;
+      text-decoration-color: #3f372e;
+    }
+
+    /* 卡片网格 */
+    .card-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.8rem;
+      margin-bottom: 2.6rem;
+    }
+
+    .card {
+      background: #ffffff;
+      border-radius: 1.5rem;
+      padding: 1.8rem 1.5rem 1.5rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+      transition: transform 0.1s ease, box-shadow 0.2s;
+      border: 1px solid #e7e2da;
+    }
+
+    .card:hover {
+      box-shadow: 0 6px 18px rgba(0,0,0,0.04);
+      transform: translateY(-2px);
+    }
+
+    .card-icon {
+      font-size: 1.6rem;
+      margin-bottom: 0.4rem;
+      display: inline-block;
+    }
+
+    .card h3 {
+      font-size: 1.3rem;
+      font-weight: 500;
+      color: #2b2a28;
+      margin-bottom: 0.4rem;
+    }
+
+    .card p {
+      font-size: 0.95rem;
+      color: #54514c;
+      line-height: 1.55;
+    }
+
+    .card ul {
+      list-style: none;
+      margin-top: 0.5rem;
+    }
+
+    .card ul li {
+      padding: 0.15rem 0;
+      font-size: 0.9rem;
+      color: #4d4944;
+      display: flex;
+      align-items: baseline;
+    }
+
+    .card ul li::before {
+      content: "•";
+      color: #b3a28b;
+      margin-right: 0.5rem;
+    }
+
+    /* 引用块 / 提示框 */
+    .info-box {
+      background: #f2ede6;
+      border-left: 5px solid #c7b9a4;
+      border-radius: 12px;
+      padding: 1.4rem 1.6rem;
+      margin: 2.2rem 0;
+      color: #3e3a34;
+      font-size: 0.98rem;
+      line-height: 1.6;
+    }
+
+    .info-box strong {
+      color: #2b2823;
+      font-weight: 600;
+    }
+
+    .info-box a {
+      color: #5a4e3e;
+      text-decoration: underline 1px solid #b8aa96;
+      text-underline-offset: 3px;
+    }
+
+    /* 行内链接自然段落 */
+    .natural-text {
+      margin: 1.8rem 0;
+      font-size: 1rem;
+      line-height: 1.7;
+    }
+
+    .natural-text a {
+      color: #5a4e3e;
+      border-bottom: 1px solid #cfc5b6;
+      text-decoration: none;
+      transition: border-color 0.15s;
+    }
+
+    .natural-text a:hover {
+      border-color: #2b2823;
+      color: #2b2823;
+    }
+
+    /* FAQ 摘要 */
+    .faq-summary {
+      background: #ffffff;
+      border: 1px solid #e7e2da;
+      border-radius: 1.5rem;
+      padding: 1.6rem 1.8rem;
+      margin: 2.2rem 0;
+    }
+
+    .faq-summary h3 {
+      font-weight: 500;
+      font-size: 1.15rem;
+      margin-bottom: 1rem;
+      color: #2b2a28;
+    }
+
+    .faq-item {
+      border-bottom: 1px solid #efebe5;
+      padding: 0.8rem 0;
+    }
+
+    .faq-item:last-child {
+      border-bottom: none;
+    }
+
+    .faq-item p {
+      font-size: 0.92rem;
+      color: #4d4944;
+    }
+
+    .faq-item p q {
+      font-style: normal;
+      color: #2f2b26;
+      font-weight: 450;
+    }
+
+    .faq-item .answer {
+      margin-left: 1.2rem;
+      margin-top: 0.25rem;
+      color: #625d55;
+    }
+
+    /* 页脚 */
+    .footer-note {
+      font-size: 0.8rem;
+      color: #9e968b;
+      text-align: center;
+      margin-top: 3rem;
+      padding-top: 1rem;
+      border-top: 1px solid #e7e2da;
+    }
+
+    /* 响应式 */
+    @media (max-width: 640px) {
+      body {
+        padding: 0 0.8rem;
+      }
+      .page {
+        margin: 1.8rem auto;
+      }
+      .hero {
+        padding: 2rem 1.2rem;
+      }
+      .hero h1 {
+        font-size: 1.7rem;
+      }
+      .card-grid {
+        grid-template-columns: 1fr;
+        gap: 1.2rem;
+      }
+      .card {
+        padding: 1.3rem 1.2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <!-- hero 主视觉 -->
+  <div class="hero">
+    <h1>关于 <span style="font-weight:450;">竞猜足球</span></h1>
+    <div class="sub">
+      一处稳定的信息入口，方便你快速了解怎样参与、哪些场景适合、以及如何避开常见的误区。
+      <br>
+      <a href="https://app-soccerpicks.com">竞猜足球</a> 本身是一个专注于比赛数据与提示的工具页面。
+    </div>
+  </div>
+
+  <!-- 用途卡片 · 适合人群  两列 -->
+  <div class="card-grid">
+    <div class="card">
+      <div class="card-icon">📘</div>
+      <h3>用途 · 日常参考</h3>
+      <p>页面主要提供比赛日程、队伍近况以及基础的数据对比，适合赛前快速浏览。并非预测或推荐平台，而是一个整理展示信息的窗口。</p>
+      <ul>
+        <li>查看当天及未来赛程</li>
+        <li>球队主客场胜率统计</li>
+        <li>常用联赛覆盖（五大联赛 + 杯赛）</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-icon">👥</div>
+      <h3>适合人群</h3>
+      <p>无论你是刚开始关注足球竞猜的新手，还是希望节省整理时间的普通爱好者，都可以把它当作快速参考页。关键在于保持理性，把它当作信息辅助，而非决策依据。</p>
+      <ul>
+        <li>周末想简单了解比赛背景的你</li>
+        <li>不喜欢在多个网站间反复切换</li>
+        <li>对数据敏感但不需要复杂分析</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 自然链接段落 + 提示框风格 -->
+  <div class="natural-text">
+    很多时候我们只是想找个地方把比赛信息集中起来，不用每次都从零搜索。<a href="https://app-soccerpicks.com">竞猜足球</a> 恰好提供了这样一种轻量整理：联赛、时间、近几场表现都罗列在同一页，省去跳转的麻烦。当然，任何公开数据都有更新延迟的可能，建议以官方赛程为准。
+  </div>
+
+  <div class="info-box">
+    <strong>一个小的提醒：</strong> 竞猜本身存在不确定性，页面展示的内容仅作为背景参考，不构成任何形式的建议。保持平常心，享受比赛本身比结果更重要。
+  </div>
+
+  <!-- FAQ 摘要 -->
+  <div class="faq-summary">
+    <h3>常见疑问 · 简短说明</h3>
+    <div class="faq-item">
+      <p><q>页面实时更新吗？</q></p>
+      <div class="answer">数据会在每个比赛日之前刷新，但极端情况下可能因接口延迟稍有滞后，建议赛前半小时核对。</div>
+    </div>
+    <div class="faq-item">
+      <p><q>需要注册或登录吗？</q></p>
+      <div class="answer">完全不需要。直接打开页面即可浏览所有公开信息，没有账户体系，也没有隐藏付费内容。</div>
+    </div>
+    <div class="faq-item">
+      <p><q>包含所有联赛吗？</q></p>
+      <div class="answer">覆盖主流欧洲联赛及部分杯赛，非主流联赛偶尔会缺席，团队会根据关注度逐步添加。</div>
+    </div>
+  </div>
+
+  <!-- 结尾 稳定入口 -->
+  <div style="margin: 2.2rem 0 1rem; font-size: 0.95rem; color: #4d4944; background: #fbfaf8; padding: 1rem 1.5rem; border-radius: 20px; border: 1px solid #e7e2da;">
+    <span style="font-weight: 450;">✎ 页面说明：</span>
+    本文档仅作为 <a href="https://app-soccerpicks.com" style="color:#4d4944;text-decoration:underline 1px dashed #b8aa96;">竞猜足球</a> 的介绍与场景梳理，不涉及任何诱导行为。如果你只是想找一个信息集中、没有广告干扰的赛前参考页，或许可以把它收藏起来。
+  </div>
+
+  <div class="footer-note">
+    内容仅供参考 · 保持理性 · 享受足球
+  </div>
+
+</div>
+</body>
+</html>
