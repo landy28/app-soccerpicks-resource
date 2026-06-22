@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>米乐体育 · 简明指南</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #faf9f8;
+      color: #1d1b1a;
+      font-family: -apple-system, "PingFang SC", "Noto Sans SC", "Helvetica Neue", system-ui, sans-serif;
+      line-height: 1.6;
+      padding: 2.5rem 1.2rem;
+    }
+
+    .page {
+      max-width: 720px;
+      margin: 0 auto;
+      background: white;
+      border-radius: 32px;
+      padding: 2.8rem 2.2rem 3.5rem;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.04);
+    }
+
+    /* 主视觉 — 浅色卡片式 */
+    .hero-card {
+      background: #f3f1ee;
+      padding: 2rem 1.8rem;
+      border-radius: 24px;
+      margin-bottom: 2.5rem;
+      text-align: center;
+    }
+
+    .hero-card h1 {
+      font-size: 2.4rem;
+      font-weight: 500;
+      letter-spacing: -0.02em;
+      color: #1f1c1a;
+      margin-bottom: 0.4rem;
+    }
+
+    .hero-card .sub {
+      font-size: 1rem;
+      color: #6b6360;
+      border-top: 1px solid #d9d3cf;
+      display: inline-block;
+      padding-top: 0.75rem;
+      margin-top: 0.3rem;
+    }
+
+    /* 标题层级 */
+    h2 {
+      font-size: 1.4rem;
+      font-weight: 480;
+      margin: 2rem 0 0.8rem;
+      letter-spacing: -0.01em;
+      color: #221e1c;
+      border-bottom: 1px solid #ece7e3;
+      padding-bottom: 0.4rem;
+    }
+
+    h3 {
+      font-size: 1.05rem;
+      font-weight: 500;
+      margin: 1.4rem 0 0.3rem;
+      color: #332e2b;
+    }
+
+    p {
+      margin: 0.6rem 0 1rem;
+      color: #3b3633;
+    }
+
+    /* 用途卡片 — 两列网格 */
+    .card-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin: 1rem 0 0.2rem;
+    }
+
+    .usage-card {
+      background: #f7f5f2;
+      border-radius: 18px;
+      padding: 1.2rem 1rem;
+      transition: background 0.15s;
+    }
+
+    .usage-card .icon {
+      font-size: 1.4rem;
+      margin-bottom: 0.3rem;
+      display: block;
+    }
+
+    .usage-card strong {
+      font-weight: 500;
+      color: #231f1d;
+    }
+
+    .usage-card p {
+      font-size: 0.9rem;
+      margin: 0.25rem 0 0;
+      color: #4f4844;
+    }
+
+    /* 适合人群 — 列表样式 */
+    .audience-list {
+      list-style: none;
+      margin: 0.6rem 0 1.2rem;
+    }
+
+    .audience-list li {
+      position: relative;
+      padding-left: 1.5rem;
+      margin-bottom: 0.45rem;
+      color: #3b3633;
+    }
+
+    .audience-list li::before {
+      content: "—";
+      position: absolute;
+      left: 0;
+      color: #b0a79f;
+    }
+
+    /* 提示框 */
+    .note-card {
+      background: #f2efe9;
+      border-left: 4px solid #bcafa4;
+      padding: 1rem 1.4rem;
+      border-radius: 14px;
+      margin: 1.5rem 0;
+    }
+
+    .note-card p {
+      margin: 0.2rem 0;
+      font-size: 0.95rem;
+    }
+
+    /* 嵌入链接 */
+    a {
+      color: #3f3a36;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      text-decoration-thickness: 1px;
+      text-decoration-color: #c7beb7;
+      transition: text-decoration-color 0.2s;
+    }
+
+    a:hover {
+      text-decoration-color: #1f1c1a;
+    }
+
+    /* FAQ 摘要 */
+    .faq-item {
+      margin: 1rem 0 0.4rem;
+    }
+
+    .faq-item .q {
+      font-weight: 480;
+      color: #2d2926;
+    }
+
+    .faq-item .a {
+      margin: 0.1rem 0 0 0.8rem;
+      color: #5a534e;
+      font-size: 0.95rem;
+    }
+
+    /* 响应式 */
+    @media (max-width: 500px) {
+      .page {
+        padding: 1.8rem 1.2rem 2.5rem;
+        border-radius: 24px;
+      }
+      .hero-card h1 {
+        font-size: 1.9rem;
+      }
+      .card-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+  <!-- 主视觉 -->
+  <div class="hero-card">
+    <h1>米乐体育</h1>
+    <div class="sub">一个以实用和清晰为出发点的信息页</div>
+  </div>
+
+  <!-- 用途卡片 -->
+  <h2>主要用途一览</h2>
+  <div class="card-grid">
+    <div class="usage-card">
+      <span class="icon">📋</span>
+      <strong>了解平台结构</strong>
+      <p>快速熟悉功能分区和内容组织方式。</p>
+    </div>
+    <div class="usage-card">
+      <span class="icon">🔍</span>
+      <strong>获取使用指引</strong>
+      <p>找到常见操作的简明步骤与参考。</p>
+    </div>
+    <div class="usage-card">
+      <span class="icon">⚙️</span>
+      <strong>配置与调整</strong>
+      <p>查看账户、通知、偏好等基础设置说明。</p>
+    </div>
+    <div class="usage-card">
+      <span class="icon">📎</span>
+      <strong>相关资源入口</strong>
+      <p>集合帮助文档、更新日志与说明链接。</p>
+    </div>
+  </div>
+
+  <!-- 适合人群 -->
+  <h2>适合哪些人阅读</h2>
+  <ul class="audience-list">
+    <li>第一次接触 <a href="https://portal-milesport.com">米乐体育</a> 的新用户，希望系统了解基本功能</li>
+    <li>需要回顾操作流程或查看常见细节的普通使用者</li>
+    <li>想快速确认使用条件、兼容性及注意事项的访问者</li>
+    <li>偏好通过文字说明而非视频或客服获取信息的人</li>
+  </ul>
+
+  <!-- 自然链接段落 + 简明指南 -->
+  <h2>从简明指南开始</h2>
+  <p>
+    这份介绍页并不是完整的使用手册，而是一张索引卡片。如果你想直接查看完整的平台内容，可以前往 
+    <a href="https://portal-milesport.com">米乐体育</a> 浏览详情。页面上的导航和分类可以帮助你按兴趣逐步深入。
+  </p>
+  <p>
+    如果你正在寻找某个具体功能或设置项，建议先利用站内的搜索功能，或者对照左侧菜单逐项查看。大部分常用操作都配有简短说明，减少试错时间。
+  </p>
+
+  <!-- 访问提醒卡片 -->
+  <div class="note-card">
+    <p><strong>访问提醒</strong></p>
+    <p>使用最新版浏览器（Chrome、Edge、Safari 等）可以获得更好的显示效果与安全性。部分页面需要使用稳定的网络连接，以便完整加载资源。</p>
+    <p>如果遇到加载异常或空白页，可尝试刷新或清除浏览器缓存后再试。</p>
+  </div>
+
+  <!-- FAQ 摘要 -->
+  <h2>常见疑问摘要</h2>
+  <div class="faq-item">
+    <p class="q">Q：必须注册才能浏览内容吗？</p>
+    <p class="a">部分公开信息无需登录即可查看；涉及个人化功能或设置则需要注册账户。</p>
+  </div>
+  <div class="faq-item">
+    <p class="q">Q：移动设备上体验如何？</p>
+    <p class="a">页面采用响应式布局，在手机和平板上均可正常阅读与操作，建议保持系统与浏览器为最新版本。</p>
+  </div>
+  <div class="faq-item">
+    <p class="q">Q：有没有离线版说明？</p>
+    <p class="a">目前以在线文档为主，你可以将本页或相关帮助页面保存为 PDF 以便离线参考。</p>
+  </div>
+
+  <!-- 收尾 -->
+  <p style="margin-top: 2rem; font-size: 0.9rem; color: #8d847e; text-align: center; border-top: 1px solid #ece7e3; padding-top: 1.2rem;">
+    信息整理 · 供参考学习使用
+  </p>
+</div>
+</body>
+</html>
