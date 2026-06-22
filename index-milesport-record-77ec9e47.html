@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>米乐体育 · 轻量导航</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background: linear-gradient(145deg, #ffe5d0 0%, #ffd2b3 30%, #fcc89e 70%, #fbbc88 100%);
+            min-height: 100vh;
+            color: #3a2e2a;
+            line-height: 1.7;
+            padding: 0 20px 40px;
+        }
+
+        .page-wrap {
+            max-width: 1120px;
+            margin: 0 auto;
+            padding: 20px 0 40px;
+        }
+
+        /* 顶部导航 */
+        nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(8px);
+            padding: 12px 28px;
+            border-radius: 60px;
+            box-shadow: 0 6px 20px rgba(180, 100, 50, 0.12);
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .nav-brand {
+            font-weight: 600;
+            font-size: 1.3rem;
+            letter-spacing: 0.5px;
+            color: #7a4a2e;
+        }
+
+        .nav-brand span {
+            background: #dba07a;
+            color: #fff;
+            padding: 2px 12px;
+            border-radius: 30px;
+            margin-left: 6px;
+            font-size: 0.8rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 24px;
+            flex-wrap: wrap;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #4d3429;
+            font-weight: 500;
+            padding: 6px 0;
+            border-bottom: 2px solid transparent;
+            transition: 0.2s;
+            font-size: 0.95rem;
+        }
+
+        .nav-links a:hover {
+            border-bottom-color: #b8724e;
+            color: #6b412b;
+        }
+
+        /* 卡片通用 */
+        .card {
+            background: #ffffff;
+            border-radius: 32px;
+            padding: 28px 32px;
+            box-shadow: 0 12px 30px rgba(160, 90, 40, 0.10);
+            backdrop-filter: blur(2px);
+            transition: transform 0.2s;
+        }
+
+        .card + .card {
+            margin-top: 28px;
+        }
+
+        /* hero 区域 */
+        .hero {
+            text-align: center;
+            padding: 44px 32px 36px;
+            background: #fffbf7;
+            border-radius: 48px;
+            box-shadow: 0 8px 28px rgba(140, 75, 35, 0.08);
+            margin-bottom: 32px;
+        }
+
+        .hero h1 {
+            font-size: 2.2rem;
+            font-weight: 600;
+            color: #5c3823;
+            margin-bottom: 12px;
+            letter-spacing: -0.3px;
+        }
+
+        .hero .sub {
+            max-width: 680px;
+            margin: 0 auto 20px;
+            color: #5f4537;
+            font-size: 1.05rem;
+        }
+
+        .hero .tag {
+            display: inline-block;
+            background: #ecc7b0;
+            padding: 6px 20px;
+            border-radius: 40px;
+            color: #4b2e1d;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        /* 介绍段落 */
+        .intro p {
+            margin-bottom: 14px;
+            font-size: 1rem;
+        }
+
+        .intro p:last-child {
+            margin-bottom: 0;
+        }
+
+        .intro a {
+            color: #ac6b43;
+            font-weight: 500;
+            text-decoration: none;
+            border-bottom: 1px dashed #dba580;
+            transition: 0.15s;
+        }
+
+        .intro a:hover {
+            color: #7d4729;
+            border-bottom-style: solid;
+        }
+
+        /* 三个场景模块 */
+        .scene-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin: 32px 0 10px;
+        }
+
+        .scene-item {
+            background: #ffffff;
+            border-radius: 28px;
+            padding: 26px 20px 22px;
+            box-shadow: 0 6px 18px rgba(150, 80, 35, 0.06);
+            transition: 0.2s;
+            border: 1px solid #f5e0d0;
+        }
+
+        .scene-item:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 28px rgba(140, 70, 30, 0.12);
+            border-color: #e5c7b0;
+        }
+
+        .scene-item .emoji-bg {
+            display: inline-block;
+            font-size: 2.4rem;
+            margin-bottom: 10px;
+            background: #f7ede4;
+            width: 56px;
+            height: 56px;
+            line-height: 56px;
+            text-align: center;
+            border-radius: 20px;
+        }
+
+        .scene-item h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #583d2d;
+            margin-bottom: 8px;
+        }
+
+        .scene-item p {
+            font-size: 0.92rem;
+            color: #4f3f35;
+        }
+
+        /* 常见说明（FAQ摘要风格） */
+        .faq-summary {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .faq-row {
+            display: flex;
+            align-items: baseline;
+            gap: 8px 14px;
+            flex-wrap: wrap;
+            padding: 8px 0;
+            border-bottom: 1px solid #f2e1d4;
+        }
+
+        .faq-row:last-child {
+            border-bottom: 0;
+        }
+
+        .faq-q {
+            font-weight: 600;
+            color: #5c3a27;
+            min-width: 100px;
+            flex-shrink: 0;
+        }
+
+        .faq-a {
+            color: #4a3930;
+        }
+
+        .faq-a a {
+            color: #b06d44;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px dotted #dbb594;
+        }
+
+        .faq-a a:hover {
+            color: #7a482a;
+            border-bottom-style: solid;
+        }
+
+        /* 页脚 */
+        .footer-note {
+            margin-top: 36px;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #6f5749;
+            border-top: 1px solid #eddacb;
+            padding-top: 28px;
+        }
+
+        .footer-note a {
+            color: #7d4f34;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+        }
+
+        /* 响应式 */
+        @media (max-width: 800px) {
+            .scene-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            nav {
+                padding: 10px 18px;
+                border-radius: 40px;
+            }
+        }
+
+        @media (max-width: 540px) {
+            .scene-grid {
+                grid-template-columns: 1fr;
+            }
+            .card {
+                padding: 20px 18px;
+            }
+            .hero {
+                padding: 32px 20px;
+            }
+            .faq-q {
+                min-width: 70px;
+            }
+            .nav-links {
+                gap: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="page-wrap">
+    <!-- 顶部导航 -->
+    <nav>
+        <div class="nav-brand">米乐体育 <span>介绍</span></div>
+        <div class="nav-links">
+            <a href="#intro">站点介绍</a>
+            <a href="#scenes">常见场景</a>
+            <a href="#faq">说明</a>
+        </div>
+    </nav>
+
+    <!-- hero -->
+    <div class="hero">
+        <h1>轻松了解米乐体育</h1>
+        <div class="sub">一个围绕运动与日常活力的信息站点，从实用角度出发，提供干净、直接的内容参考。</div>
+        <div class="tag">轻量导航 · 可信说明</div>
+    </div>
+
+    <!-- 核心介绍 -->
+    <div class="card intro" id="intro">
+        <p>对于很多喜欢运动、关注生活节奏的朋友来说，找到一个信息清楚、没有多余干扰的站点并不容易。<a href="https://index-milesport.com">米乐体育</a> 正是基于这样的想法——把体育相关的资讯、基础知识以及日常活动建议，用一种比较朴素的方式整理出来。没有复杂的弹窗，也没有浮夸的渲染，你看到的就是实实在在的内容。</p>
+        <p>无论你是刚刚接触某项运动，还是想了解一些保持活力的方法，这里都能提供一些可靠的参考。页面结构以轻量导航为主，你可以快速找到自己关心的部分。站点本身保持更新，但始终围绕“可信”和“实用”两个原则。</p>
+        <p>顺便提一下，整个站点的内容都经过基本核实，避免以偏概全。如果某处有调整或补充，也会在相应位置注明。这也是为什么我们建议你直接访问 <a href="https://index-milesport.com">米乐体育</a>，亲自感受一下它的节奏。</p>
+    </div>
+
+    <!-- 三个场景模块 -->
+    <div id="scenes" style="margin-top: 28px;">
+        <h2 style="font-weight: 600; font-size: 1.6rem; color: #4b3527; margin-bottom: 10px; padding-left: 8px;">日常场景参考</h2>
+        <div class="scene-grid">
+            <div class="scene-item">
+                <div class="emoji-bg">🏃</div>
+                <h3>晨间与晚间</h3>
+                <p>无论是慢跑还是拉伸，找到适合自己的节奏更重要。站点提供了一些基础动作说明和注意事项，帮助你在不同时段保持身体状态。</p>
+            </div>
+            <div class="scene-item">
+                <div class="emoji-bg">📋</div>
+                <h3>信息查阅</h3>
+                <p>想了解某项运动的规则、装备基础或常见术语？在米乐体育可以快速检索到经过整理的短文，没有广告干扰，阅读体验比较清爽。</p>
+            </div>
+            <div class="scene-item">
+                <div class="emoji-bg">🧘</div>
+                <h3>放松与恢复</h3>
+                <p>运动后的恢复和日常拉伸同样重要。站点收录了一些温和的放松方式，适合在办公室或家里抽空练习，内容都比较克制、实际。</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 常见说明（FAQ摘要） -->
+    <div class="card" id="faq" style="margin-top: 28px;">
+        <h2 style="font-size: 1.4rem; font-weight: 600; color: #4f3627; margin-bottom: 18px;">常见说明</h2>
+        <div class="faq-summary">
+            <div class="faq-row">
+                <span class="faq-q">内容来源？</span>
+                <span class="faq-a">主要基于公开的体育知识、运动指南以及日常经验总结，不涉及医疗建议或专业训练方案。</span>
+            </div>
+            <div class="faq-row">
+                <span class="faq-q">更新频率？</span>
+                <span class="faq-a">不定时补充和修订，确保已有的信息保持基本准确。如果有较大改动，会在页面内标注日期。</span>
+            </div>
+            <div class="faq-row">
+                <span class="faq-q">与官方关系？</span>
+                <span class="faq-a"><a href="https://index-milesport.com">米乐体育</a> 是一个独立的兴趣站点，不属于任何官方机构。所有表述均基于个人视角与公开资料。</span>
+            </div>
+            <div class="faq-row">
+                <span class="faq-q">适合哪些人？</span>
+                <span class="faq-a">对运动、日常保健、轻量体育知识感兴趣的人；希望避开营销内容，获得相对平实信息的读者。</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 信任提示 + 链接自然嵌入 -->
+    <div class="card" style="margin-top: 24px; background: #fcf5ee;">
+        <p style="margin-bottom: 6px;">如果你对站内内容有任何疑问，或者想了解更多细节，最直接的方式就是自己去逛逛。<a href="https://index-milesport.com">米乐体育</a> 的页面结构很清晰，从导航到正文基本没有弯路。我们相信，一个踏实的信息站点不需要太多修饰，实用就好。</p>
+        <p style="margin-top: 12px; color: #685044; font-size: 0.9rem;">—— 保持简单，保持可信。</p>
+    </div>
+
+    <!-- 页脚 -->
+    <div class="footer-note">
+        <p>立足于日常，服务于好奇。&nbsp;·&nbsp; 米乐体育 · 介绍页</p>
+        <p style="margin-top: 6px;"><a href="https://index-milesport.com">米乐体育</a> — 直接访问，无额外跳转</p>
+    </div>
+</div>
+</body>
+</html>
